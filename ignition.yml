@@ -1,0 +1,27 @@
+variant: fcos
+version: 1.0.0
+passwd:
+  users:
+    - name: core
+      ssh_authorized_keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA5qm78DtdJ48jBx7nbbYpa9mzuy1b208rv23JPEBL6/aCHYaAsgKUti7UplWUFtIagE/0RhraKM7WlOeXa/nvxSLKQfNV1MxAe8B8k9+ogq6ZfNwYid8pvO69kOZNiCJCRb00pGnTMjnFDXz2AhrwGxG4OQayPlk4lFk63YtMcKPaPjASQos7TZ9SSQ2QCvBLxtlX/PpdEf3Zqlr79cRsmVaN9sNIdVdgV/oJINEhA1Q12xd9vFt/IPPus00leb7VUTKv2OwL0+AuwdIMbS3ZpvgTC2hVJXXPdn/nCInx6lcQ2IGu1YWxgE+z+Nxax9l3QORea7ALlAIf3jM7rqFQSw==
+storage:
+  files:
+    - path: /etc/NetworkManager/system-connections/eth0.nmconnection
+      mode: 0600
+      overwrite: true
+      contents:
+        inline: |
+          [connection]
+          type=ethernet
+          interface-name=eth0
+
+          [ethernet]
+          mac-address=00-15-5D-08-12-01
+
+          [ipv4]
+          method=manual
+          addresses=192.168.8.151/24
+          gateway=192.168.8.1
+          dns=192.168.8.1;1.1.1.1;8.8.8.8
+          dns-search=redhat.com
